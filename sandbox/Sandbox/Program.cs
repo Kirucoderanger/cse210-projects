@@ -121,5 +121,75 @@ class Program
         string userInput = Console.ReadLine();
         int number1 = int.Parse(userInput);
         string textVersion = number.ToString();
+
+        
+string response = "yes";
+
+while (response == "yes")
+{
+    Console.Write("Do you want to continue? ");
+    response = Console.ReadLine();
+}
+
+Console.WriteLine("Goodbye!");
+
+
+
+string response1;
+
+do
+{
+    Console.Write("Do you want to continue? ");
+    response1 = Console.ReadLine();
+} while (response1 == "yes");
+
+Console.WriteLine("Goodbye!");
+
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine(i);
+    {
+        Console.WriteLine("Hello World!");
+    }
+}
+
+
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine(i);
+}
+
+
+
+for (int i = 2; i <= 20; i = i + 2)
+{
+    Console.WriteLine(i);
+}
+
+
+foreach (char letter in "Hello World!")
+{
+    Console.WriteLine(letter);
+}
+
+string[] colors = { "red", "green", "blue" };
+
+
+foreach (string clr in colors)
+{
+    Console.WriteLine(color);
+}
+
+
+Random randomGenerator = new Random();
+int numberRandom = randomGenerator.Next(1, 11);
+
+
+
+
+
+
+
+
     }
 }
