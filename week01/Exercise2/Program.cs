@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        
+        string gradeLater = "";
         Console.Write("What is your grade? ");
         int grade = int.Parse(Console.ReadLine());
 
@@ -20,24 +20,25 @@ class Program
 
                 if (grade >= 90)
                 {
-                    Console.WriteLine("You got an A.");
+                    gradeLater = "A";
                 }
                 else if (grade >= 80)
                 {
-                    Console.WriteLine("You got a B.");
+                    gradeLater = "B";
                 }
                 else if (grade >= 70)
                 {
-                    Console.WriteLine("You got a C.");
+                    gradeLater = "C";
                 }
                 else if (grade >= 60)
                 {
-                    Console.WriteLine("You got a D.");
+                    gradeLater = "D";
                 }
                 else
                 {
-                    Console.WriteLine("You got an F.");
+                    gradeLater = "F";
                 }
+                Console.WriteLine($"You Got {gradeLater}.");
         
     }
 }
