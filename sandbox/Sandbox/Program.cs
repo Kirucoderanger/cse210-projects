@@ -1,4 +1,7 @@
 using System;
+/*
+// Week 1: Added more complex conditional statements, loops, and a class with attributes, constructor, and methods.
+using System;
 
 class Program
 {
@@ -56,15 +59,15 @@ class Program
         else
         {
             Console.WriteLine("less than both");
-        }
+        }*/
 
 
-        /* string color;
-        string firstName;
-        string lastName;
-        int velocityBeforeImpactWasMade;*/
+/* string color;
+string firstName;
+string lastName;
+int velocityBeforeImpactWasMade;*/
 
-
+/*
         string name = "John";
         string favoriteColor = "blue";
         string color = "red";
@@ -214,3 +217,84 @@ for (int i = 0; i < words.Count; i++)
 
     }
 }
+
+*/
+// Week 2: Added a new class with additional attributes, methods, and inheritance.
+// creating a class
+// top-level statements must come before any namespace or type declarations. or class declaretion must be in separet file.
+        
+    
+    
+        Console.WriteLine("Hello, World!");
+        Person person  = new Person();
+        person._givenName = "Joseph";
+        person._familyName = "Smith";
+        person.ShowWesternName();
+        person.ShowEasternName();
+        
+// more than 1 instance can be created on the same class symultinously
+ 
+       Person person1 = new Person();
+        person1._givenName = "Emma";
+        person1._familyName = "Smith";
+        person1.ShowWesternName();
+
+        Person person2 = new Person();
+        person2._givenName = "Joseph";
+        person2._familyName = "Smith";
+        person2.ShowWesternName();
+ 
+// Custom Data Types
+
+        Blind kitchen = new Blind();
+        kitchen._width = 60;
+        kitchen._height = 48;
+        kitchen._color = "white";
+        // the value can be acessed directly from consol
+        Console.WriteLine(kitchen._width);
+        double materialAmount = kitchen.GetArea();
+        Console.WriteLine(materialAmount);
+        Console.WriteLine(kitchen.GetArea());
+
+
+//nested class
+House kirubel = new House();
+kirubel._kitchen = new Blind();
+kirubel._kitchen._width = 80;
+kirubel._kitchen._height = 33;
+kirubel._kitchen._color = "blue";
+kirubel._livingRoom = new Blind();
+kirubel._livingRoom._width = 100;
+kirubel._livingRoom._height = 56;
+kirubel._livingRoom._color ="Violet";
+kirubel._owner = "Kirubel Family";
+double materialAmountKitchen = kirubel._kitchen.GetArea();
+Console.WriteLine(materialAmountKitchen);
+Console.WriteLine(kirubel._kitchen.GetArea());
+double materialAmountLivingRoom = kirubel._livingRoom.GetArea();
+Console.WriteLine(materialAmountLivingRoom);
+Console.WriteLine(kirubel._livingRoom.GetArea());
+
+
+
+
+// nested class list manuplation
+HouseList kirubelList = new HouseList();
+kirubelList._blinds.Add(kitchen);
+kirubelList._blinds.Add(kirubel._livingRoom);
+Console.WriteLine(kirubelList._blinds[0].GetArea());
+Console.WriteLine(kirubelList._blinds[1].GetArea());
+double amountKitchen = kirubelList._blinds[0].GetArea();
+Console.WriteLine(amountKitchen);
+double amountLivingRoom = kirubelList._blinds[0].GetArea();
+Console.WriteLine(amountLivingRoom);
+
+
+foreach (Blind b in kirubelList._blinds)
+{
+    double amount = b.GetArea();
+    Console.WriteLine(amount);
+}
+
+
+
