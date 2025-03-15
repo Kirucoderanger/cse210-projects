@@ -1,7 +1,7 @@
-/* using System;
+using System;
 using System.Collections.Generic;
 
-namespace Journal
+namespace PromptGeneratorer
 {
     public class PromptGenerator
     {
@@ -25,16 +25,21 @@ namespace Journal
             int index = random.Next(prompts.Count);
             return prompts[index];
         }
-    }
-}
-*/
-public class PromptGenerator
+
+    /*public static implicit operator string(PromptGenerator v)
+    {
+        throw new NotImplementedException();
+    }*/
+  }
+
+
+/*public class PromptGenerator
 {
     public List<string> _prompts;
     public string GetRandomPrompt()
     {
-        return "";
-    }
+        return _prompts[0];
+    }*/
     //public string _promptText;
     //public string _entryText;
 

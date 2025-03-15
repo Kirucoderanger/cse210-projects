@@ -43,18 +43,20 @@ public class MyJournal
 
 public class Journal
 {
-    public List<Entry> _entries;
-    public void AddEntry(Entry entry)
+    public List<Entry> entryList = new List<Entry>();
+    public void AddEntry(Entry anEntry)
     {
-        //_entries.Add(entry);
+        entryList.Add(anEntry);
     }
     public void DisplayAll()
     {
-       /* foreach (Entry i in _entries)
+        foreach (Entry i in entryList)
         {
             i.Display();
-        }*/
+        }
     }
+    
+
     public void SaveToFile(string filename)
     {
         //StreamWriter writer = new StreamWriter(filename);
