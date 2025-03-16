@@ -69,7 +69,11 @@ public class Journal
         File.AppendAllLines(saveFilename, lines);
                 */
         //using(StreamWriter writer = new StreamWriter(saveFilename))
-        using(StreamWriter writer = File.AppendText(saveFilename))
+        Console.Write("Do you want to add this journal to an existing file? (y/n): ");
+        string answer = Console.ReadLine();
+        if (answer == "y")
+        {
+            using(StreamWriter writer = File.AppendText(saveFilename))
         {
             foreach (Entry i in entryList)
             {
@@ -77,6 +81,20 @@ public class Journal
             }
 
         }
+        }
+        else
+        {
+            using(StreamWriter writer = new StreamWriter(saveFilename))
+        {
+            foreach (Entry i in entryList)
+            {
+                writer.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}");
+            }
+
+        }
+        }
+
+        
         
     }
     public static List<Entry> LoadFromFile(string loadFilename)
@@ -102,6 +120,15 @@ public class Journal
         //}
         //reader.Close();
     }
+
+     public static void removeArtist()  
+        {  
+            Console.Write("Please enter the artist name you want to delete: ");  
+            string name = Console.ReadLine();  
+            List<string> lst = File.ReadAllLines("Data.txt").Where(arg => !string.IsNullOrWhiteSpace(arg)).ToList();  
+            lst.RemoveAll(x => x.Split('.')[0].Equals(name));  
+            File.WriteAllLines("Data.txt", lst);  
+        }  
 
 
     /*
