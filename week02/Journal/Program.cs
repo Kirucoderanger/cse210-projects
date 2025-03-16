@@ -12,6 +12,7 @@
 // The program uses the Journal class to manage the list of journal entries.
 // The program uses the Entry class to represent a journal entry.
 // The program uses the PromptGenerator class to generate random prompts for the journal entries.
+// The program can AppendAllLines to a file.
 
 using System;
 using System.Collections.Generic;

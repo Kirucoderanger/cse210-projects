@@ -61,7 +61,15 @@ public class Journal
 
     public static void SaveToFile(List<Entry> entryList , string saveFilename)
     {
-        using(StreamWriter writer = new StreamWriter(saveFilename))
+        /* List<string> lines = new List<string>();
+        foreach (Entry entry in entryList)
+        {
+            lines.Add($"{entry._date} - {entry._promptText}\n{entry._entryText}");
+        }
+        File.AppendAllLines(saveFilename, lines);
+                */
+        //using(StreamWriter writer = new StreamWriter(saveFilename))
+        using(StreamWriter writer = File.AppendText(saveFilename))
         {
             foreach (Entry i in entryList)
             {
