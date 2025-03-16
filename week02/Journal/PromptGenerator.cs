@@ -16,7 +16,34 @@ namespace PromptGeneratorer
             "Reflect on a recent accomplishment.",
             "What is something you are looking forward to?",
             "Describe a person who made a positive impact on your day.",
-            "What is something new you tried today?"
+            "What is something new you tried today?", 
+            "What is something you are proud of?",
+            "What is something you are looking forward to?",
+            "Who was the most interesting person I interacted with today?",
+            "What is something I learned today?",
+            "What is something I did today that I am proud of?",
+            "What is something I did today that I could have done better?",
+            "What is something I did today that I could have done differently?",
+            "What is something I did today that I would like to do again?",
+            "What was the best part of my day?",
+            "What was the worst part of my day?",
+            "What was the most challenging part of my day?",
+            "What was the most rewarding part of my day?",
+            "What was the most surprising part of my day?",
+            "What was the most disappointing part of my day?",
+            "What was the most frustrating part of my day?",
+            "What was the most exciting part of my day?",
+            "How did I see the hand of the Lord in my life today?",
+            "How did I see the hand of the Lord in the life of someone else today?",
+            "What was the strongest emotion I felt today?",
+            "What was the most difficult decision I made today?",
+            "What was the most important decision I made today?",
+            "What was the most impactful decision I made today?",
+            "What was the most meaningful decision I made today?"
+
+
+
+
         };
 
         public static string GetRandomPrompt()
