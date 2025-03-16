@@ -71,8 +71,15 @@ public class Journal
         }
         
     }
-    public void LoadFromFile(string filename)
-    {
+    public static List<Entry> LoadFromFile(string loadFilename)
+    {   
+        List<Entry> entryLins = new List<Entry>();
+        string[] lines = System.IO.File.ReadAllLines(loadFilename);
+        foreach (string line in lines)
+        {
+           Console.WriteLine(line);      
+      }
+      return entryLins;
         //StreamReader reader = new StreamReader(filename);
         //while (!reader.EndOfStream)
         //{

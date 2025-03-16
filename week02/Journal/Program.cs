@@ -109,6 +109,17 @@ class Program
                 string saveFilename = Console.ReadLine();
                 Journal.SaveToFile(theJournal.entryList, saveFilename);
                 break;
+            case "4":
+                Console.Write("Enter the filename to load the journal: ");
+                string loadFilename = Console.ReadLine();
+                List<Entry> jornalentries = Journal.LoadFromFile(loadFilename);
+                foreach (Entry i in jornalentries)
+                {
+                    Console.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}");
+                }
+
+                Journal.LoadFromFile(loadFilename);
+                break;
             default:
                 Console.WriteLine("Invalid option. Please try again.");
                 break;
