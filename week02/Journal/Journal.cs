@@ -1,4 +1,6 @@
-
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 
 /* 
@@ -57,14 +59,17 @@ public class Journal
     }
     
 
-    public void SaveToFile(string filename)
+    public static void SaveToFile(List<Entry> entryList , string saveFilename)
     {
-        //StreamWriter writer = new StreamWriter(filename);
-        //foreach (Entry i in _entries)
-        //{
-        //    writer.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}");
-        //}
-        //writer.Close();
+        using(StreamWriter writer = new StreamWriter(saveFilename))
+        {
+            foreach (Entry i in entryList)
+            {
+                writer.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}");
+            }
+
+        }
+        
     }
     public void LoadFromFile(string filename)
     {

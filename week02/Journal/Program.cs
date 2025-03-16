@@ -103,6 +103,12 @@ class Program
              case "5":
                 running = false;
                 break;
+            
+            case "3":
+                Console.Write("Enter the filename to save the journal: ");
+                string saveFilename = Console.ReadLine();
+                Journal.SaveToFile(theJournal.entryList, saveFilename);
+                break;
             default:
                 Console.WriteLine("Invalid option. Please try again.");
                 break;
