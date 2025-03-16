@@ -40,10 +40,6 @@ namespace PromptGeneratorer
             "What was the most important decision I made today?",
             "What was the most impactful decision I made today?",
             "What was the most meaningful decision I made today?"
-
-
-
-
         };
 
         public static string GetRandomPrompt()
@@ -53,38 +49,38 @@ namespace PromptGeneratorer
             return prompts[index];
         }
 
-    /*public static implicit operator string(PromptGenerator v)
-    {
+        /*public static implicit operator string(PromptGenerator v)
+        {
         throw new NotImplementedException();
-    }*/
+        }*/
   }
 
 
-/*public class PromptGenerator
-{
-    public List<string> _prompts;
-    public string GetRandomPrompt()
+    /*public class PromptGenerator
     {
-        return _prompts[0];
-    }*/
-    //public string _promptText;
-    //public string _entryText;
+        public List<string> _prompts;
+        public string GetRandomPrompt()
+        {
+            return _prompts[0];
+        }*/
+        //public string _promptText;
+        //public string _entryText;
 
-    /*
-    public DateTime Date { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
+        /*
+        public DateTime Date { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
 
-    public Entry(DateTime date, string title, string content)
-    {
-        Date = date;
-        Title = title;
-        Content = content;
-    }
+        public Entry(DateTime date, string title, string content)
+        {
+            Date = date;
+            Title = title;
+            Content = content;
+        }
 
-    public override string ToString()
-    {
-        return $"{Date.ToShortDateString()} - {Title}\n{Content}";
-    }
-    */
+        public override string ToString()
+        {
+            return $"{Date.ToShortDateString()} - {Title}\n{Content}";
+        }
+        */
 }
