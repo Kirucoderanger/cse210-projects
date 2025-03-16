@@ -67,10 +67,10 @@ class Program
             }
         }*/
         Journal theJournal = new Journal();
-        Entry anEntry = new Entry();
+        //Entry anEntry = new Entry();
         DateTime theCurrentTime = DateTime.Now;
         string dateText = theCurrentTime.ToShortDateString();
-        anEntry._date = dateText;
+        //anEntry._date = dateText;
         //anEntry._promptText = "What are you grateful for today?";
         //anEntry._entryText = "I am grateful for my family.";
          bool running = true;
@@ -91,11 +91,15 @@ class Program
             case "1":
                 string prompt = PromptGenerator.GetRandomPrompt();
                 Console.Write(prompt);
+                Entry anEntry = new Entry();
+                anEntry._date = dateText;
                 anEntry._entryText = Console.ReadLine();
                 anEntry._promptText = prompt;
                 //anEntry._promptText = PromptGeneratorer.PromptGenerator.GetRandomPrompt();
                 //PromptGenerator prompts = new PromptGenerator();
+                
                 theJournal.AddEntry(anEntry);
+                
                 break;
             case "2":
                 theJournal.DisplayAll();

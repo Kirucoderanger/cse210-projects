@@ -28,6 +28,8 @@ public class Entry
     public string _date;
     public string _promptText;
     public string _entryText;
+    //Journal theJournal = new Journal();
+    //theJournal.AddEntry(anEntry);
 
     public void Display()
     {
