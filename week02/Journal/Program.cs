@@ -114,11 +114,11 @@ class Program
             case "4":
                 Console.Write("Enter the filename to load the journal: ");
                 string loadFilename = Console.ReadLine();
-                List<Entry> jornalentries = Journal.LoadFromFile(loadFilename);
+                /*List<Entry> jornalentries = Journal.LoadFromFile(loadFilename);
                 foreach (Entry i in jornalentries)
                 {
                     Console.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}");
-                }
+                }*/
 
                 Journal.LoadFromFile(loadFilename);
                 break;
