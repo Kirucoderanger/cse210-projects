@@ -1,6 +1,6 @@
 // File: Program.cs
-// Date: 2021-07-11
-// Author: Gabriel Andrade
+// Date: 2025-03-16
+// Author: Kirubel Mekonen
 // Description: Main program for the Journal project.
 // date 2025-03-16
 // Purpose: Main program for the Journal project.
