@@ -77,7 +77,7 @@ public class Journal
         {
             foreach (Entry i in entryList)
             {
-                writer.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}");
+                writer.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}\n{i._placeText}");
             }
 
         }
@@ -88,7 +88,7 @@ public class Journal
         {
             foreach (Entry i in entryList)
             {
-                writer.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}");
+                writer.WriteLine($"{i._date} - {i._promptText}\n{i._entryText}\n{i._placeText}");
             }
 
         }

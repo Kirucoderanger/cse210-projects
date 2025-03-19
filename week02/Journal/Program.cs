@@ -13,6 +13,7 @@
 // The program uses the Entry class to represent a journal entry.
 // The program uses the PromptGenerator class to generate random prompts for the journal entries.
 // The program can AppendAllLines to a file as the user choses to add to an existing file or create a new one.
+// The program has additional entry fields for the place of the entry.
 // To be continued on alerting the user to write a journal mornining non and evening.
 
 using System;
@@ -89,9 +90,13 @@ class Program
             case "1":
                 string prompt = PromptGenerator.GetRandomPrompt();
                 Console.Write(prompt);
+                string entry = Console.ReadLine();
+                Console.Write("Enter a place home or other: ");
+                string place = Console.ReadLine();
                 Entry anEntry = new Entry();
                 anEntry._date = dateText;
-                anEntry._entryText = Console.ReadLine();
+                anEntry._entryText = entry;
+                anEntry._placeText = place;
                 anEntry._promptText = prompt;
                 //anEntry._promptText = PromptGeneratorer.PromptGenerator.GetRandomPrompt();
                 //PromptGenerator prompts = new PromptGenerator();

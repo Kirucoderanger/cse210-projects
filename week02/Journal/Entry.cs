@@ -28,11 +28,12 @@ public class Entry
     public string _date;
     public string _promptText;
     public string _entryText;
+    public string _placeText;
     //Journal theJournal = new Journal();
     //theJournal.AddEntry(anEntry);
 
     public void Display()
     {
-        Console.WriteLine($"{_date} - {_promptText}\n{_entryText}");
+        Console.WriteLine($"{_date} - {_promptText}\n{_entryText}\n{_placeText}");
     }
 }
