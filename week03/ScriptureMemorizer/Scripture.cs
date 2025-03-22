@@ -9,12 +9,20 @@ public class Scripture
 {
     string wordx = WordGenerator.GetRandomWord().Item1; 
     int indexx = WordGenerator.GetRandomWord().Item2;
+    string hidenWord = WordGenerator.WordHider();
+    
 
     public (string, int) PrintMessage()
     {
        // Console.WriteLine(wordx);
         //Console.WriteLine(indexx);
         return (wordx, indexx);
+    }
+
+    public string DisplayHiden()
+    {
+        
+        return hidenWord;
     }
 }
 

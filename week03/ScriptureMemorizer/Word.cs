@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Word
 {
@@ -45,18 +47,77 @@ namespace Word
 
         public static (string, int) GetRandomWord()
         {
+            
             Random random = new Random();
             int index = random.Next(words.Count);
             List<string> splitdWords = words[index].Split(' ').ToList();
             int wordLen = splitdWords.Count;
             int randomWordIndex = random.Next(0,wordLen); 
             string randomScripture = words[index];
-            return (words[index], randomWordIndex);
+            return (randomScripture, randomWordIndex);
             //return string.Join(" ", splitdWords);
             
         }
 
+        public class WordSentisaizer()
         
+        {
+            
+        
+            private string selectedWord = WordGenerator.GetRandomWord().Item1;
+             private int selectedIndex = WordGenerator.GetRandomWord().Item2;
+             public string GetWord()
+             {
+                return selectedWord;
+             }
+
+             public void setWord(string newWord)
+             {
+                selectedWord = newWord;
+
+             }
+            /*
+            public (string, int) GetWordDetails()
+            {
+                
+                List<string> splitdWords = selectedWord.Split(' ').ToList();
+                int wordLen = splitdWords.Count;
+                Random random = new Random();
+                int index = random.Next(words.Count);
+                int randomWordIndex = random.Next(0, wordLen);
+                return (selectedWord, randomWordIndex);
+            }*/
+
+        }
+        static WordSentisaizer sentisaized = new WordSentisaizer();
+        static string sentisaizedWord = sentisaized.GetWord();
+        //List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+        public static string WordHider()
+        {
+            
+                //WordSentisaizer sentisaized = new WordSentisaizer();
+                //string sentisaizedWord = sentisaized.GetWord();
+                List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+                int wordLen = splitdWords.Count;
+                Random random = new Random();
+                int index = random.Next(words.Count);
+                int randomWordIndex = random.Next(0, wordLen);
+                List<int> hidens = new List<int>
+                {};
+                hidens.Add(randomWordIndex);
+                foreach (int hiddenIndex in hidens)
+                splitdWords[hiddenIndex] = "_______";
+                return string.Join(" ", splitdWords);
+
+                //return sentisaizedWord;
+            
+
+        
+        
+        
+        }
+
+
 
 
 

@@ -11,6 +11,7 @@ class Program
         Console.Write("Select scripture you want to memorize with one verse or two verse");
 
         Scripture scripture = new Scripture();
+        //Scripture scripture1 = new Scripture();
         
         
             DisplayScripture(scripture);
@@ -26,6 +27,15 @@ class Program
 
         while (true)
         {
+                    Scripture scripture1 = new Scripture();
+
+            DisplayHidenScripture(scripture1);
+            static void DisplayHidenScripture(Scripture scripture1)
+            {
+                Console.Write(scripture1.DisplayHiden());
+            }
+
+            
 
         
                 string choice = Console.ReadLine();
@@ -38,6 +48,7 @@ class Program
                         break;
                         
                     }
+            
                
 
         }
