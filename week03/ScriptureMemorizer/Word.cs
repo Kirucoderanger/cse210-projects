@@ -92,6 +92,7 @@ namespace Word
         static WordSentisaizer sentisaized = new WordSentisaizer();
         static string sentisaizedWord = sentisaized.GetWord();
         //List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+        static List<int> hiddenIndices = new List<int>();
         public static string WordHider()
         {
             
@@ -102,10 +103,10 @@ namespace Word
                 Random random = new Random();
                 int index = random.Next(words.Count);
                 int randomWordIndex = random.Next(0, wordLen);
-                List<int> hidens = new List<int>
-                {};
-                hidens.Add(randomWordIndex);
-                foreach (int hiddenIndex in hidens)
+                //List<int> hidens = [randomWordIndex];
+                //List<int> hiddenIndices = new List<int>();
+                hiddenIndices.Add(randomWordIndex);
+                foreach (int hiddenIndex in hiddenIndices)
                 splitdWords[hiddenIndex] = "_______";
                 return string.Join(" ", splitdWords);
 
