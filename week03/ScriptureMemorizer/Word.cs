@@ -10,6 +10,8 @@ namespace Word
     {
         private static List<string> words = new List<string>
         {
+            "Therefore whosoever heareth these sayings of mine, and doeth them, I will liken him unto a wise man, which built his house upon a rock",
+            "And the rain descended, and the floods came, and the winds blew, and beat upon that house; and it fell not: for it was founded upon a rock",
             "What are you grateful for today?",
             "Describe a memorable moment from your day.",
             "What did you learn today?",
@@ -59,6 +61,13 @@ namespace Word
             
         }
 
+        static WordSentisaizer sentisaized = new WordSentisaizer();
+        public static string sentisaizedWord = sentisaized.GetWord();
+        public static List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+        
+        
+        
+
         public class WordSentisaizer()
         
         {
@@ -89,34 +98,92 @@ namespace Word
             }*/
 
         }
-        static WordSentisaizer sentisaized = new WordSentisaizer();
-        static string sentisaizedWord = sentisaized.GetWord();
-        //List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+
+        public class IndexInitializeInts()
+        {
+            //List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+            private int wordLen = splitdWords.Count;
+            private  List<int> Ints = new List<int>();
+            public List<int> GetIndexList()
+        {
+            
+            for (int i = 0; i < wordLen-1 ; i++)
+                Ints.Add(i);
+            return Ints;
+        }
+
+        public List<int> RemoveIndex(int newIndex)
+             {
+                Ints.RemoveAt(newIndex);
+                return Ints;
+             }
+
+
+        }
+
+        
+        
+
+          
+         //public static List<int> ints = new List<int>();
+
+        public static (string, int) GetFullScripture()
+        {
+             //WordSentisaizer sentisaized = new WordSentisaizer();
+             //string sentisaizedWord = sentisaized.GetWord();
+             List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+                int wordLen = splitdWords.Count;
+                /*for (int i = 0; i < wordLen ; i++)
+                    ints.Add(i);*/
+             
+             return (sentisaizedWord, wordLen);
+        }
+        
+        
+        
+       
+        static IndexInitializeInts initialindex = new IndexInitializeInts();
+        public static List<int> ints = initialindex.GetIndexList();
         static List<int> hiddenIndices = new List<int>();
+        
+        
+        
         public static string WordHider()
         {
             
                 //WordSentisaizer sentisaized = new WordSentisaizer();
                 //string sentisaizedWord = sentisaized.GetWord();
                 List<string> splitdWords = sentisaizedWord.Split(' ').ToList();
+                
+
                 int wordLen = splitdWords.Count;
                 Random random = new Random();
-                int index = random.Next(words.Count);
+                int indexx = random.Next(ints.Count);
                 int randomWordIndex = random.Next(0, wordLen);
                 //List<int> hidens = [randomWordIndex];
                 //List<int> hiddenIndices = new List<int>();
-                hiddenIndices.Add(randomWordIndex);
+                //int intigers = 0;
+                
+                
+                //hiddenIndices.RemoveAt(0);
+
+                
+                    
+                hiddenIndices.Add(ints[indexx]);
                 foreach (int hiddenIndex in hiddenIndices)
                 splitdWords[hiddenIndex] = "_______";
+                ints.Remove(ints[indexx]);
+                //initialindex.RemoveIndex(indexx);
+                
+                
                 return string.Join(" ", splitdWords);
+                
 
                 //return sentisaizedWord;
-            
+        }
 
         
-        
-        
-        }
+       
 
 
 
