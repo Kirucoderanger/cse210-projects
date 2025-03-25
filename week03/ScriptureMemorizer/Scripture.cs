@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Word;
 using System.Reflection.Metadata.Ecma335;
 using System.Reflection.Metadata;
+using Reference;
 
 
 public class Scripture
@@ -15,6 +16,19 @@ public class Scripture
     
     string fullscripture = WordGenerator.GetFullScripture().Item1;
     int wordLen = WordGenerator.GetFullScripture().Item2;
+    int indexsentisized = WordGenerator.sentisaizedIndex;
+    string trakedreferance;
+
+    public Scripture()
+    {
+        trakedreferance = DesplayReferance();
+    }
+
+    public string DesplayReferance()
+    {
+        trakedreferance = ReferenceTracker.ReferncePicker(indexsentisized);
+        return trakedreferance;
+    }
 
     public (string, int) PrintMessage()
     {

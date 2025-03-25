@@ -2,6 +2,7 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
 using Word;
+using Reference;
 
 class Program
 {
@@ -12,15 +13,17 @@ class Program
 
         Scripture scripture = new Scripture();
         //Scripture scripture1 = new Scripture();
-        DisplayScripture(scripture);
-        static void DisplayScripture(Scripture scripture)
+        string refing = scripture.DesplayReferance();
+        DisplayScripture(scripture, refing);
+        static void DisplayScripture(Scripture scripture, string refing)
         {           
             // Add your scripture display logic here
-            Console.WriteLine(scripture.PrintMessage());            
+            //Console.WriteLine($"{refing}: {scripture.PrintMessage()} ");            
         }
-        DisplayFullScripture(scripture);
-        static void DisplayFullScripture(Scripture scripture)
+        DisplayFullScripture(scripture, refing);
+        static void DisplayFullScripture(Scripture scripture, string refing)
         {
+            Console.WriteLine(refing);
             Console.Write(scripture.DisplayFull().Item1);
         }
 
@@ -34,9 +37,10 @@ class Program
         {
             Console.Clear();
             Scripture scripture1 = new Scripture();                
-            DisplayHidenScripture(scripture1);
-            static void DisplayHidenScripture(Scripture scripture1)
-            {                
+            DisplayHidenScripture(scripture1, refing);
+            static void DisplayHidenScripture(Scripture scripture1, string refing)
+            {
+                Console.WriteLine(refing);                
                 Console.Write(scripture1.DisplayHiden());
             }
             string choice1 = Console.ReadLine();
