@@ -28,11 +28,11 @@ class Program
         
         string choice = Console.ReadLine();
         int limit = scripture.DisplayFull().Item2;
-        int counter = 1;
+        int counter = 0;
 
         while ( counter < limit)
         {
-            
+            Console.Clear();
             Scripture scripture1 = new Scripture();                
             DisplayHidenScripture(scripture1);
             static void DisplayHidenScripture(Scripture scripture1)

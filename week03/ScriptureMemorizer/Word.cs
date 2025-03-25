@@ -107,7 +107,7 @@ namespace Word
             public List<int> GetIndexList()
         {
             
-            for (int i = 0; i < wordLen-1 ; i++)
+            for (int i = 0; i < wordLen ; i++)
                 Ints.Add(i);
             return Ints;
         }
@@ -171,7 +171,14 @@ namespace Word
                     
                 hiddenIndices.Add(ints[indexx]);
                 foreach (int hiddenIndex in hiddenIndices)
-                splitdWords[hiddenIndex] = "_______";
+                {
+                char[] letters = splitdWords[hiddenIndex].ToCharArray();
+                for (int i = 0; i < letters.Length; i++)
+                {
+                    letters[i] = '_';
+                }
+                splitdWords[hiddenIndex] = new string(letters);
+                }
                 ints.Remove(ints[indexx]);
                 //initialindex.RemoveIndex(indexx);
                 
