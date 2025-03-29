@@ -21,6 +21,7 @@ public class Comments
     comments.Add(new List<string> { "video3", "Jack", "Clear and concise."});
     comments.Add(new List<string> { "video3", "Karen", "I learned a lot."});
     comments.Add(new List<string> { "video3", "Leo", "Looking forward to more!"});
+    comments.Add(new List<string> { "video3", "Georg", "Great learnin experiance!"});
 
     
 
