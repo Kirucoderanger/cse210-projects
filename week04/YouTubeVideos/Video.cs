@@ -10,10 +10,7 @@ public class Video
         videos.Add(new List<string> { "video1", "Understanding C#", "John Doe", "600"});
         videos.Add(new List<string> { "video2", "Introduction to LINQ", "Jane Smith", "450"});
         videos.Add(new List<string> { "video3", "Mastering ASP.NET Core", "Alice Johnson", "1200"});
-        
-
     }
-
     
     public static string DisplayVideoDetail(List<List<string>> comments)
     {
@@ -35,36 +32,15 @@ public class Video
                     comment += comments[i][j] + " ";
                     numComments += 1;
                     }
-
-
                 }
-
             }
             int numComent = numComments / 3;
 
             videoDetails += $"ID: {video[0]}, Title: {video[1]}, Author: {video[2]}, Length: {video[3]} seconds\n {numComent} Comments \n {comment} \n";
         }
         return videoDetails.Trim();
-
-
-        /*
-        int i = 0;
-        int j = 0;
-        var comment = "";
-        for (i = 0; i < comments.Count; i++)
-        {
-            for (j = 0; j < comments[i].Count; j++)
-            {
-            comment += comments[i][j] + " ";
-            }
-        }
-        return comment.Trim();*/
            
     }
-        
-    
-    
-
     
 }
 
