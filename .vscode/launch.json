@@ -2,6 +2,9 @@
 {
     "version": "0.2.0",
     "configurations": [
+       
+        
+
         
         
 
@@ -173,7 +176,18 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
+        {
+            "name": "Week 05: Inheritance",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-week05-Inheritance",
+            "program": "${workspaceFolder}/week05/Inheritance/bin/Debug/net8.0/Homework.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/week05/Inheritance",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
         {
             "name": "Week 05: Mindfulness",
             "type": "coreclr",

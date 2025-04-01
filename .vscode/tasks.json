@@ -184,6 +184,20 @@
             ],
             "problemMatcher": "$msCompile"
         },
+        
+        {
+            "label": "build-week05-Inheritance",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/week05/Inheritance/Homework.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        
 
         {
             "label": "build-week06-Shapes",
