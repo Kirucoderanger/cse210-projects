@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-public class Customer
+public class Customer 
 {
     private string _name;
     public Address Address { get; set; }
@@ -29,7 +29,9 @@ public class Customer
     public string GetAddress()
     {
         //return Address.ToString();
-        return $"{Address.StreetAddress}\n{Address.City}, {Address.StateOrProvince}\n{Address.Country}";
+        //return $"{Address.StreetAddress}\n{Address.City}, {Address.StateOrProvince}\n{Address.Country}";
+        //return Address.GetStreetAddress() + "\n" + Address.GetCity() + ", " + Address.GetStateOrProvince() + "\n" + Address.GetCountry();
+        return $"{Address.GetStreetAddress()}\n{Address.GetCity()}, {Address.GetStateOrProvince()}\n{Address.GetCountry()}";
     }
 }
 /*
