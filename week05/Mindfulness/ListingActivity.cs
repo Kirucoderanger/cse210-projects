@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Formats.Tar;
 
 
 
@@ -36,6 +37,7 @@ public class ListingActivity : Activity
         List<string> items = CollectItems(duration);
 
         Console.WriteLine($"You listed {items.Count} items!");
+        Thread.Sleep(2000); // Pause for 2 seconds before showing the next message   
         //Console.WriteLine("Great job! Thank you for participating in the Listing Activity.");
     }
 
