@@ -4,8 +4,9 @@ using System.Threading;
 using System.Runtime.InteropServices;
 
 
-    public class ReflectingActivity
+    public class ReflectingActivity :Activity
     {
+        Activity activity = new Activity();
         private List<string> prompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
@@ -27,21 +28,21 @@ using System.Runtime.InteropServices;
             "How can you keep this experience in mind in the future?"
         };
 
-        public void Start()
+        public void Start(int duration)
         {
-            Console.WriteLine("Welcome to the Reflecting Activity.");
-            Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience.");
-            Console.WriteLine("This will help you recognize the power you have and how you can use it in other aspects of your life.");
-            Console.Write("How many seconds would you like to spend on this activity? ");
-            int duration = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("\nGet ready to begin...");
-            Thread.Sleep(2000);
+            //Console.WriteLine("Welcome to the Reflecting Activity.");
+            //Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience.");
+            //Console.WriteLine("This will help you recognize the power you have and how you can use it in other aspects of your life.");
+            //Console.Write("How many seconds would you like to spend on this activity? ");
+            //int duration = int.Parse(Console.ReadLine());
+//
+            //Console.WriteLine("\nGet ready to begin...");
+            //Thread.Sleep(2000);
 
             ShowRandomPrompt();
             ReflectOnQuestions(duration);
 
-            Console.WriteLine("\nGreat job! You have completed the Reflecting Activity.");
+            //Console.WriteLine("\nGreat job! You have completed the Reflecting Activity.");
         }
 
         private void ShowRandomPrompt()
@@ -70,7 +71,7 @@ using System.Runtime.InteropServices;
             }
         }
 
-        private void ShowSpinner(int seconds)
+        /*private void ShowSpinner(int seconds)
         {
             DateTime endTime = DateTime.Now.AddSeconds(seconds);
             while (DateTime.Now < endTime)
@@ -85,6 +86,6 @@ using System.Runtime.InteropServices;
                 Thread.Sleep(200);
                 Console.Write("\b");
             }
-        }
+        }*/
     }
  

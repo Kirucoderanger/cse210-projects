@@ -7,8 +7,35 @@
         // Properties, methods, and fields for the Activity class can be added here.
         private string _name;
         private string _description;
-        protected int _duration;
-        public string Name
+        private int _duration;
+        public void SetName(string name)
+        {
+            _name = name;
+        }
+        public string GetName()
+        {
+            return _name;
+        }
+        public void SetDescription(string description)
+        {
+            _description = description;
+        }
+        public string GetDescription()
+        {
+            return _description;
+        }
+        public void SetDuration(int duration)
+        {
+            _duration = duration;
+        }
+        public int GetDuration()
+        {
+            return _duration;
+        }
+        
+
+
+        /*public string Name
         
         {
             get { return _name; }
@@ -25,7 +52,8 @@
         {
             get { return _duration; }
             set { _duration = value; }
-        }
+        }*/
+        /*
         public void SetDurationFromInput()
         {
             Console.Write("Enter the duration of the activity in seconds: ");
@@ -49,18 +77,23 @@
         public void SetDuration(string duration)
         {
             _duration = int.Parse(duration);
-        }
+        }*/
         
         public Activity(string name, string description)
         {
-            _name = name;
-            _description = description;
+            SetName(name);
+            SetDescription(description);
+            //_name = name;
+            //_description = description;
             DisplayStartingMessage();
 
              Console.Write("Enter a new duration for the activity in seconds: ");
                 int newDuration = int.Parse(Console.ReadLine());
-                _duration = newDuration;
-                Console.WriteLine($"The new duration is: {_duration} seconds.");
+                //_duration = newDuration;
+                SetDuration(newDuration);
+                
+                Console.WriteLine($"The activity will last for: {GetDuration()} seconds.");
+                //Console.WriteLine($"The activity will last for: {newDuration} seconds.");
             //SetDurationFromInput();
             //Console.Write("Enter the duration of the activity in seconds: ");
             //_duration = Console.ReadLine() != null ? int.Parse(Console.ReadLine()) : 0;
@@ -73,30 +106,28 @@
             if (name == "Breathing Exercise")
             {
                 BreathingActivity BreathingActivity = new BreathingActivity();
-                BreathingActivity.Run(_duration);
+                BreathingActivity.Run(GetDuration());
             }
-            else if (name == "Reflecting")
+            else if (name == "Reflection Activity")
             {
                 ReflectingActivity reflectingActivity = new ReflectingActivity();
-                reflectingActivity.Start();
+                reflectingActivity.Start(GetDuration());
                 
                 
             }
-            else if (name == "Listing")
+            else if (name == "Gratitude Journal")
             {
                 ListingActivity listingActivity = new ListingActivity();
-                listingActivity.Start();
+                listingActivity.Start(GetDuration());
             }
             else
             {
                 Console.WriteLine("Invalid activity name.");
             }
+            DisplayEndingMessage();
 
         }
-         public int GetDuration()
-        {
-            return _duration;
-        }
+        
         
             // Default constructor
         public Activity()
@@ -142,24 +173,51 @@
         }*/
         public void DisplayActivityDetails()
         {
-            Console.WriteLine($"Activity Name: {Name}");
-            Console.WriteLine($"Description: {Description}");
-            Console.WriteLine($"Duration: {Duration} minutes");
+            Console.WriteLine($"Activity Name: {GetName}");
+            Console.WriteLine($"Description: {GetDescription}");
+            //Console.WriteLine($"Duration: {Duration} minutes");
         }
         public void DisplayStartingMessage()
         {
+            //Activity activity = new Activity();
+
             Console.WriteLine("Welcome to the Mindfulness Activity!");
-            Console.WriteLine($"You are about to start: {Name}");
-            Console.WriteLine($"Description: {Description}");
-            Console.WriteLine($"This activity will last for {Duration} minutes.");
+            Console.WriteLine($"You are about to start: {GetName()}");
+            Console.WriteLine($"Description: {GetDescription()}");
+            //Console.WriteLine($"This activity will last for {Duration} minutes.");
         }
         public void DisplayEndingMessage()
         {
-            Console.WriteLine("Congratulations on completing the activity!");
-            Console.WriteLine("Thank you for participating in the Mindfulness Program.");
+            //Activity activity = new Activity();
+            //Console.WriteLine($"Congratulations on completing the {Name} activity!");
+            //Console.WriteLine("Thank you for participating in the Mindfulness Program.");
+            Console.WriteLine("");
+            Console.WriteLine("Well done!");
+            ShowSpinner(3); // Simulate loading spinner for 3 seconds
+            Console.WriteLine("");
+            Console.WriteLine($"Great job! You have completed another {GetDuration()} seconds of the {GetName()} activity.");
+            ShowSpinner(3); // Simulate loading spinner for 3 seconds
+            Console.Clear();
         }
         public void DisplayInstructions()
         {
+            Console.WriteLine("Instructions:");
+            Console.WriteLine("1. Find a comfortable position.");
+            Console.WriteLine("2. Close your eyes and take a deep breath.");
+            Console.WriteLine("3. Focus on your breathing and let go of any distractions.");
+            Console.WriteLine("4. Continue for the duration of the activity.");
+        }
+        public void DisplayInstructions(string instructions)
+        {
+            Console.WriteLine("Instructions:");
+            Console.WriteLine(instructions);
+            Console.WriteLine("1. Find a comfortable position.");
+            Console.WriteLine("2. Close your eyes and take a deep breath.");
+            Console.WriteLine("3. Focus on your breathing and let go of any distractions.");
+            Console.WriteLine("4. Continue for the duration of the activity.");
+        
+            Console.WriteLine("5. When you are ready, open your eyes and take a moment to reflect.");
+            Console.WriteLine("6. Take a moment to express gratitude for the experience.");
             Console.WriteLine("Please follow the instructions carefully.");
             Console.WriteLine("Take a deep breath and relax.");
             Console.WriteLine("Focus on your breathing and let go of any distractions.");
@@ -185,6 +243,23 @@
             System.Threading.Thread.Sleep(1000); // Pause for 1 second
             }
             Console.WriteLine();
+        }
+
+        public void ShowSpinner(int seconds)
+        {
+            DateTime endTime = DateTime.Now.AddSeconds(seconds);
+            while (DateTime.Now < endTime)
+            {
+                Console.Write("/");
+                Thread.Sleep(200);
+                Console.Write("\b-");
+                Thread.Sleep(200);
+                Console.Write("\b\\");
+                Thread.Sleep(200);
+                Console.Write("\b|");
+                Thread.Sleep(200);
+                Console.Write("\b");
+            }
         }
 
 
@@ -231,8 +306,11 @@
         Console.WriteLine("\rCountdown complete!                  ");
     }
 
-        public void ShowSpinner(int seconds)
+        public void ShowSpinnerDots(int seconds)
         {
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine("Get ready to begin...");
             Console.Write("Loading");
             for (int i = 0; i < seconds; i++)
             {
@@ -248,6 +326,16 @@
             {
                 Console.Write(".");
                 System.Threading.Thread.Sleep(1000); // Pause for 1 second
+            }
+            Console.WriteLine();
+        }
+
+        public void Countdown(int seconds)
+        {
+            for (int i = seconds; i > 0; i--)
+            {
+                Console.Write(i + " ");
+                Thread.Sleep(1000); // Pause for 1 second
             }
             Console.WriteLine();
         }

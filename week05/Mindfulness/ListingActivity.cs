@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 
 
 
-public class ListingActivity
+public class ListingActivity : Activity
 {
-    private string _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+    //private string _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
     private List<string> _prompts = new List<string>
     {
         "Who are people that you appreciate?",
@@ -17,15 +17,15 @@ public class ListingActivity
         "Who are some of your personal heroes?"
     };
 
-    public void Start()
+    public void Start(int duration)
     {
-        Console.WriteLine("Welcome to the Listing Activity!");
-        Console.WriteLine(_description);
-        Console.Write("Please enter the duration of the activity in seconds: ");
-        int duration = int.Parse(Console.ReadLine());
+        //Console.WriteLine("Welcome to the Listing Activity!");
+        //Console.WriteLine(_description);
+        //Console.Write("Please enter the duration of the activity in seconds: ");
+        //int duration = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Get ready...");
-        Thread.Sleep(2000);
+        //Console.WriteLine("Get ready...");
+        //Thread.Sleep(2000);
 
         string prompt = GetRandomPrompt();
         Console.WriteLine($"Prompt: {prompt}");
@@ -36,7 +36,7 @@ public class ListingActivity
         List<string> items = CollectItems(duration);
 
         Console.WriteLine($"You listed {items.Count} items!");
-        Console.WriteLine("Great job! Thank you for participating in the Listing Activity.");
+        //Console.WriteLine("Great job! Thank you for participating in the Listing Activity.");
     }
 
     private string GetRandomPrompt()
@@ -46,14 +46,14 @@ public class ListingActivity
         return _prompts[index];
     }
 
-    private void Countdown(int seconds)
+    /*private void Countdown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
             Console.WriteLine(i);
             Thread.Sleep(1000);
         }
-    }
+    }*/
 
     private List<string> CollectItems(int duration)
     {

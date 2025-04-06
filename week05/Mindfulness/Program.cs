@@ -47,15 +47,18 @@ class Program
                 // Add logic for Breathing Exercise here
                 break;
             case "2":
-                Console.WriteLine("You chose the Reflection Activity.");
-                ReflectingActivity reflectingActivity = new ReflectingActivity();
-                reflectingActivity.Start();
+                // Reflection Activity
+                Activity activity1 = new Activity("Reflection Activity", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+                //Console.WriteLine("You chose the Reflection Activity.");
+                //ReflectingActivity reflectingActivity = new ReflectingActivity();
+                //reflectingActivity.Start();
                 // Add logic for Reflection Activity here
                 break;
             case "3":
-                Console.WriteLine("You chose the Gratitude Journal.");
-                ListingActivity listingActivity = new ListingActivity();
-                listingActivity.Start();
+                Activity activity2 = new Activity("Gratitude Journal", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+                //Console.WriteLine("You chose the Gratitude Journal.");
+                //ListingActivity listingActivity = new ListingActivity();
+                //listingActivity.Start();
                 // Add logic for Gratitude Journal here
                 break;
             case "4":
