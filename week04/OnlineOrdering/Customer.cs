@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 public class Customer 
 {
     private string _name;
-    public Address Address { get; set; }
+    private Address Address { get; set; }
 
     public Customer(string name, Address address)
     {
