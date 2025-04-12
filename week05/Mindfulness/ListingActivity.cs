@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Formats.Tar;
+using System.Runtime.CompilerServices;
+using System.IO;
 
 
 
@@ -18,27 +20,87 @@ public class ListingActivity : Activity
         "Who are some of your personal heroes?"
     };
 
-    public void Start(int duration)
+    private int _count;
+    public void SetCount(int count)
     {
-        //Console.WriteLine("Welcome to the Listing Activity!");
-        //Console.WriteLine(_description);
-        //Console.Write("Please enter the duration of the activity in seconds: ");
-        //int duration = int.Parse(Console.ReadLine());
+        _count = count;
 
-        //Console.WriteLine("Get ready...");
-        //Thread.Sleep(2000);
+    }
+    public int GetCount()
+    {
+        return _count;
+    }
 
+
+    public ListingActivity (string name, string description, int count) : base(name, description)
+    {
+        _count = count;
+            
+    }
+
+    public ListingActivity (int duration) : base (duration)
+    {
+
+    }
+
+    public static void Run()
+        {
+            Console.Clear();
+            ListingActivity listingActivity = new ListingActivity("Gratitude Journal","This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 0);
+            listingActivity.DisplayStartingMessage();
+            int newDuration = int.Parse(Console.ReadLine());
+            ListingActivity listingActivity1 = new ListingActivity(newDuration);
+            int duration = listingActivity1.GetDuration();
+            Console.Clear();
+            listingActivity1.ShowSpinnerWithMessage("Get ready to begin...", 3); // Simulate loading spinner with message for 3 seconds
+            listingActivity1.Listing(duration);
+        }
+
+    public void Listing(int duration)
+    {       
         string prompt = GetRandomPrompt();
         Console.WriteLine($"Prompt: {prompt}");
         Console.WriteLine("You will have a few seconds to think about the prompt...");
-        Countdown(5);
-
+        PauseWithCountdown(5);
         Console.WriteLine("Start listing items! Press Enter after each item. When time is up, stop entering items.");
         List<string> items = CollectItems(duration);
-
         Console.WriteLine($"You listed {items.Count} items!");
-        Thread.Sleep(2000); // Pause for 2 seconds before showing the next message   
-        //Console.WriteLine("Great job! Thank you for participating in the Listing Activity.");
+        ShowSpinner(3);
+        DisplayEndingMessage();
+        Console.Write("Do you want to add this journal to an existing file? (y/n): ");
+         string answer = Console.ReadLine();
+        if (answer == "y")
+        {
+            Console.WriteLine("Please enter the filename to save to:");
+            string saveFilename = Console.ReadLine();
+            ToFile(items, saveFilename);
+            Console.WriteLine($"Your journal has been added to {saveFilename}.");
+        }
+        else
+        {
+            Console.WriteLine("Please enter the filename to save to:");
+            string saveFilename = Console.ReadLine();
+            ToFile(items, saveFilename);
+            Console.WriteLine($"Your journal has been saved to {saveFilename}.");
+        }
+        Console.Write("Do you want to load the previous journal file? (y/n): ");
+        string answer2 = Console.ReadLine();
+        if (answer2 == "y")
+        {
+            Console.WriteLine("Please enter the filename to load from:");
+            string loadFilename = Console.ReadLine();
+            LoadFromFile(loadFilename);
+            Console.WriteLine($"Your journal has been loaded from {loadFilename}.");
+        }
+        else
+        {
+            Console.WriteLine("No previous journal file loaded.");
+        }
+        Console.WriteLine("Press any key to continue...");
+
+        
+        
+        
     }
 
     private string GetRandomPrompt()
@@ -48,16 +110,7 @@ public class ListingActivity : Activity
         return _prompts[index];
     }
 
-    /*private void Countdown(int seconds)
-    {
-        for (int i = seconds; i > 0; i--)
-        {
-            Console.WriteLine(i);
-            Thread.Sleep(1000);
-        }
-    }*/
-
-    private List<string> CollectItems(int duration)
+    List<string> CollectItems(int duration)
     {
         List<string> items = new List<string>();
         DateTime endTime = DateTime.Now.AddSeconds(duration);
@@ -73,4 +126,27 @@ public class ListingActivity : Activity
 
         return items;
     }
+    public  void ToFile(List<string>items,  string saveFilename)
+    {
+        
+        using(StreamWriter writer = File.AppendText(saveFilename))
+        {
+            foreach (string i in items)
+            {
+                writer.WriteLine(i);
+            }
+        }
+
+
+    }
+    public static List<string> LoadFromFile(string loadFilename)
+    {   
+        List<string> entryLins = new List<string>();
+        string[] lines = System.IO.File.ReadAllLines(loadFilename);
+        foreach (string line in lines)
+        {
+           Console.WriteLine(line);      
+      }
+      return entryLins;
+    } 
 }

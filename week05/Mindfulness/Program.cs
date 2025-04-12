@@ -1,6 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+// author: Kirubel Mekonen
+// date: 2025-10-04
+// description: This code defines a base class for mindfulness activities, including properties and methods for managing activity details and user interactions.
+// The listing activity has an option to save and load data from a file, allowing users to keep track of their progress and reflections.
+// The code includes methods for displaying messages, simulating loading spinners, and handling user input for activity duration and prompts.
+// This code defines an Activity class that can be used as a base class for different mindfulness activities.
+// It includes properties for the activity name, description, and duration, as well as methods to display messages and instructions.
+// The ShowSpinnerInSeconds method simulates a loading spinner for a specified number of seconds.
+// The class can be extended to create specific activities like BreathingActivity, ReflectingActivity, and ListingActivity.
+// The methods can be called in the main program to provide a structured experience for users participating in mindfulness activities.
+// The class can be further enhanced by adding more properties and methods as needed for specific activities.
+// The class is designed to be flexible and reusable, allowing for easy integration into a larger mindfulness program.
+// The class can be used to create a variety of mindfulness activities, each with its own unique characteristics and behaviors.
+// The class can be instantiated and used in the main program to provide a consistent user experience across different activities.
+// The class can be easily modified or extended to accommodate new features or requirements in the mindfulness program.
+// The class can be used as a foundation for building a comprehensive mindfulness application that includes various activities and features.
+// The class can be tested and validated to ensure that it meets the requirements of the mindfulness program and provides a positive user experience.
+// The class can be documented to provide clear instructions and guidelines for developers and users who will be working with it in the future.
+// The class can be integrated with other components of the mindfulness program to create a cohesive and user-friendly application.
+// The class is designed to be flexible and reusable, allowing for easy integration into a larger mindfulness program.
+// The class can be used to create a variety of mindfulness activities, each with its own unique characteristics and behaviors.
+
 
 class Program
 {
@@ -8,9 +30,6 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Mindfulness Project.");
         bool running = true;
-
-       
-
         while (running)
         {
             Console.WriteLine("\nWelcome to the Mindfulness Program!");
@@ -19,47 +38,18 @@ class Program
             Console.WriteLine("2. Reflection Activity");
             Console.WriteLine("3. Gratitude Journal");
             Console.WriteLine("4. Quit");
-
             Console.Write("Enter your choice (1-4): ");
             string choice = Console.ReadLine();
-
             switch (choice)
             {
             case "1":
-                // Breathing Exercise
-                Activity activity = new Activity("Breathing Exercise", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.");
-                //activity.DisplayActivityDetails();
-                //activity.DisplayStartingMessage();
-                //activity.DisplayInstructions();
-                //activity.ShowSpinnerInSeconds(3); // Simulate loading spinner for 3 seconds
-                //activity.ShowSpinner(3); // Simulate loading spinner for 3 seconds
-                // Uncomment the following line to run the Breathing Activity
-                // BreathingActivity breathingActivity = new BreathingActivity();
-                // breathingActivity.Run();
-                
-
-                
-                
-
-                /*Console.WriteLine("You chose the Breathing Exercise.");
-                BreathingActivity breathingActivity = new BreathingActivity();
-                breathingActivity.Run();*/
-                // Add logic for Breathing Exercise here
+                BreathingActivity.Run();
                 break;
             case "2":
-                // Reflection Activity
-                Activity activity1 = new Activity("Reflection Activity", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
-                //Console.WriteLine("You chose the Reflection Activity.");
-                //ReflectingActivity reflectingActivity = new ReflectingActivity();
-                //reflectingActivity.Start();
-                // Add logic for Reflection Activity here
+                ReflectingActivity.Run();
                 break;
             case "3":
-                Activity activity2 = new Activity("Gratitude Journal", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
-                //Console.WriteLine("You chose the Gratitude Journal.");
-                //ListingActivity listingActivity = new ListingActivity();
-                //listingActivity.Start();
-                // Add logic for Gratitude Journal here
+                ListingActivity.Run();
                 break;
             case "4":
                 Console.WriteLine("Thank you for using the Mindfulness Program. Goodbye!");

@@ -4,9 +4,9 @@ public class SimpleGoal : Goal
     private string _description;
     private bool _isComplete;
 
-    public SimpleGoal(string name, string description, int points) : base ( name,  description,  points)
+    public SimpleGoal(int goalType, string name, string description, int points) : base (goalType, name,  description,  points)
     {
-        SetGoal(name, description, points);
+        SetGoal(goalType, name, description, points);
     }
 
     public void MarkAsComplete()

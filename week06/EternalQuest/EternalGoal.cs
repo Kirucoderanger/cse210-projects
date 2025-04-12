@@ -3,9 +3,9 @@ public class EternalGoal : Goal
     private int _bonus;
     private int _bonusMultiplier;
 
-    public EternalGoal(string name, string description, int points) : base ( name,  description,  points)
+    public EternalGoal(int goalType, string name, string description, int points) : base ( goalType, name,  description,  points)
     {
-        SetGoal(name, description, points);
+        SetGoal(goalType, name, description, points);
     }
 
    /*public EternalGoal(string name, string description, int bonus, int bonusMultiplier) : base(name, description)
@@ -24,7 +24,7 @@ public class EternalGoal : Goal
         return "Eternal Goal";
     }*/
 
-     public virtual  string GetDetailString()
+     public override  string GetDetailString()
     {
         return base.GetDetailString();
     }

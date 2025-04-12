@@ -89,7 +89,7 @@ public class GoalManager
                         SetPoints(Points);
 
                         
-                        goals.Add(new SimpleGoal(Name, Description, Points)); 
+                        goals.Add(new SimpleGoal(GoalType, Name, Description, Points)); 
 
                     }
                     else if(GoalType == 2)
@@ -110,7 +110,7 @@ public class GoalManager
                         Console.WriteLine("Enter bonus points (for Checklist goals):");
                         int BonusPoints = int.Parse(Console.ReadLine());
                         SetBonusPoints(BonusPoints);
-                        goals.Add(new ChecklistGoal(Name, Description, Points, TargetAmount, BonusPoints)); 
+                        goals.Add(new ChecklistGoal(GoalType, Name, Description, Points, TargetAmount, BonusPoints)); 
 
                     }
                     else if(GoalType == 3)
@@ -126,7 +126,7 @@ public class GoalManager
                         int Points = int.Parse(Console.ReadLine());
                         SetPoints(Points);
 
-                        goals.Add(new EternalGoal(Name, Description, Points)); 
+                        goals.Add(new EternalGoal(GoalType, Name, Description, Points)); 
 
                     }
                     else 
@@ -137,27 +137,44 @@ public class GoalManager
                     
                      
                     
-                    break;
+                break;
                 case "2":
-                    // Add logic to mark a goal as completed
-                    Console.WriteLine("_description");
-                    foreach(Goal goal in goals)
-                    {
-                    //float pay = employee1.CalculatePay(); //Polymorphism in Action
-                    Console.WriteLine(goal.ToString());
-                    string detail = goal.GetDetailString();
-                    Console.WriteLine(detail);
-                    }
-                    break;
+                // Add logic to mark a goal as completed
+                Console.WriteLine("_description");
+                foreach(Goal goal in goals)
+                {
+                //float pay = employee1.CalculatePay(); //Polymorphism in Action
+                Console.WriteLine(goal.ToString());
+                string detail = goal.GetDetailString();
+                Console.WriteLine(detail);
+                }
+                break;
                 case "3":
-                    // Add logic to view goals
-                    break;
+                // Add logic to view goals
+                break;
+                case "4":
+                // Add logic to view goals
+                break;
+                case "5":
+                // Add logic to view goals
+                Console.WriteLine("The goals are:");
+                int i = 3;
+                foreach(Goal goal in goals)
+                {
+                    
+                    string detail = goal.GetDetailString();
+
+                    Console.WriteLine($"{i}. {detail.Split(',')[0]}");
+                    i = i - 1;
+
+                }
+                break;
                 case "6":
-                    running = false;
-                    break;
+                running = false;
+                break;
                 default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
             }
         }
     }

@@ -1,22 +1,33 @@
 public class Goal
 {
+    private int _goalType;
     private string _name;
     private string _description;
     private int _points;
     //private bool _completed;
-    public Goal(string name, string description, int points)
+    public Goal(int goaltype, string name, string description, int points)
     {
         _name = name;
         _points = points;
         _description = description;
+        _goalType = goaltype;
 
     }
-    public void SetGoal(string name,string description, int points)
+    public virtual int GetGoalType()
+    {
+        return _goalType;
+    }
+    public void SetGoal(int goalType, string name,string description, int points)
     {
         _name = name;
         _points = points;
         _description = description;
+        _goalType = goalType;
         //_completed = false;
+    }
+    public virtual string RecordEvent()
+    {
+        return "Congratulations you have accomplished your goal!";
     }
 
     public virtual string GetName()
@@ -47,7 +58,7 @@ public class Goal
     }
     public virtual  string GetDetailString()
     {
-        return $"{_name},{_description},{_points}";
+        return $"{_goalType},{_name},{_description},{_points}";
     }
 }
 // Compare this snippet from week06/Shapes/Circle.cs:
