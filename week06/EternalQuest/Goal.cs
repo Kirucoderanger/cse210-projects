@@ -5,28 +5,64 @@ public class Goal
     private string _description;
     private int _points;
     //private bool _completed;
-    public Goal(int goaltype, string name, string description, int points)
+    public Goal(int goalType, string name, string description, int points)
     {
+        //_completed = completed;
+        _goalType = goalType;
         _name = name;
-        _points = points;
         _description = description;
-        _goalType = goaltype;
-
+        _points = points;
+    }
+    public void SetIscomplete(string isComplete)
+    {
+        string _isComplete = isComplete;
+        //_completed = isComplete;
+    }
+    public void SetGoals(int goalType, string name, string description, int points)
+    {
+        _goalType = goalType;
+        _name = name;
+        _description = description;
+        _points = points;
+    }
+    public virtual void SetGoals()
+    {
+       
+        //_completed = completed;
+    }
+    public virtual void SetGoals(int goalType, string name, string description, int points, string completed)
+    {
+        _goalType = goalType;
+        _name = name;
+        _description = description;
+        _points = points;
+        //_completed = completed;
+    }
+    public Goal(int goalType, string name, string description, int points, bool completed)
+    {
+        _goalType = goalType;
+        _name = name;
+        _description = description;
+        _points = points;
+        //_completed = completed;
+    }
+    public Goal(int goalType, string name, string description, int points, string isComplete)
+    {
+        _goalType = goalType;
+        _name = name;
+        _description = description;
+        _points = points;
+        //_completed = completed;
     }
     public virtual int GetGoalType()
     {
         return _goalType;
     }
-    public void SetGoal(int goalType, string name,string description, int points)
-    {
-        _name = name;
-        _points = points;
-        _description = description;
-        _goalType = goalType;
-        //_completed = false;
-    }
+    
     public virtual string RecordEvent()
     {
+        
+
         return "Congratulations you have accomplished your goal!";
     }
 
@@ -54,11 +90,22 @@ public class Goal
 
     public void MarkAsCompleted()
     {
-        //_completed = true;
+        string _isComplete = "true";
     }
     public virtual  string GetDetailString()
     {
-        return $"{_goalType},{_name},{_description},{_points}";
+        return $"{_goalType},{_name},{_description},{_points},{IsCompleted()}";
+    }
+    public virtual void GetStringRepresentation()
+    {
+        GetDetailString().ToString();
+
+        Console.WriteLine($"Goal Type: {_goalType}");
+        Console.WriteLine($"Name: {_name}");
+        Console.WriteLine($"Description: {_description}");
+        Console.WriteLine($"Points: {_points}");
+        //Console.WriteLine($"Completed: {_completed}");
+        //Console.WriteLine($"Completed: {IsCompleted()}");
     }
 }
 // Compare this snippet from week06/Shapes/Circle.cs:

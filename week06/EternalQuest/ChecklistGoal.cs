@@ -4,17 +4,16 @@ public class ChecklistGoal : Goal
     private int _targetAmount;
     private int _currentAmount;
 
-    public ChecklistGoal(int goalType, string name, string description,int points, int targetAmount, int bonusPoints): base(goalType, name, description, points )
+    public ChecklistGoal(int goalType, string name, string description,int points, int targetAmount, int bonusPoints, int currentAmount): base(goalType, name, description, points )
     {
         _targetAmount = targetAmount;
         _bonusPoints = bonusPoints;
-        _currentAmount = 0;
-        SetGoal(goalType, name,description,points);
+        _currentAmount = currentAmount;
     }
 
      public override  string GetDetailString()
     {
-        return $"{GetGoalType()}, {GetName()}, {GetDescription()}, {GetPoints()}, {_targetAmount}, {_bonusPoints}";
+        return $"{GetGoalType()},{GetName()},{GetDescription()}, {GetPoints()},{_targetAmount},{_bonusPoints},{_currentAmount}";
     }
    /* public override void RecordEvent()
     {
