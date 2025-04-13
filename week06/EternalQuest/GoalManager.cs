@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Xml.XPath;
 
 public class GoalManager
 {
@@ -9,7 +11,7 @@ public class GoalManager
     
     public void SetScore(int score)
     {
-        _score = score;
+        _score = _score + score;
     }
     public int GetScore()
     {
@@ -76,10 +78,10 @@ public class GoalManager
                         Console.WriteLine("Enter goal points:");
                         int Points = int.Parse(Console.ReadLine());
                         //SetPoints(Points);
-                        string completed = "false";
+                        //bool completed = false;
 
                         
-                        goals.Add(new SimpleGoal(GoalType, Name, Description, Points, completed)); 
+                        goals.Add(new SimpleGoal(GoalType, false, Name, Description, Points)); 
 
                     }
                     else if(GoalType == 2)
@@ -182,11 +184,12 @@ public class GoalManager
                         int points = int.Parse(parts[3]);
                         //bool isCompleted = bool.Parse(parts[4]);
                         string isCompleted = parts[4];
+                        bool result = bool.Parse(isCompleted);
                         //int targetAmount = int.Parse(parts[5]);
                         //int bonusPoints = int.Parse(parts[6]);
                         //goals.Add(new SimpleGoal(goalType, name, description, points, isCompleted)); 
                         
-                        Goal goal = new SimpleGoal(goalType, name, description, points, isCompleted);
+                        Goal goal = new SimpleGoal(goalType, result, name, description, points);
                         goals.Add(goal);
                     }
                     else if (goalTypeIdentifier == 2)
@@ -232,7 +235,7 @@ public class GoalManager
                     
                     string detail = goal.GetDetailString();
 
-                    Console.WriteLine($"{i}. {detail.Split(',')[1]}");
+                    Console.WriteLine($"{i}. {detail.Split(',')[2]}");
                     i = i + 1;
 
                 }
@@ -244,14 +247,78 @@ public class GoalManager
                 if (goalNumber >= 0 && goalNumber < goals.Count)
                 {
                     Goal selectedGoal = goals[goalNumber];
-                    //selectedGoal.GetDetailString().Split(',')[4] = "true";
-                    selectedGoal.GetDetailString().Split(',')[4] = "true";
-                    selectedGoal.MarkAsCompleted();
-                    selectedGoal.SetGoals();
-                    goals[goalNumber] = selectedGoal;
-                    Console.WriteLine($"Goal '{selectedGoal.GetName()}' marked as completed!");
+                    if (selectedGoal.GetIsCompleted() == true)
+                    {
+                        Console.WriteLine($"Goal '{goals[goalNumber].GetName()}' already completed!");
+                        break;
+                    }
+                    else 
+                    {
+                        //Goal selectedGoal = goals[goalNumber];
+                        if (selectedGoal.GetGoalType() == 1)         
+                        {
+                            selectedGoal = new SimpleGoal(selectedGoal.GetGoalType(),selectedGoal.IsCompleted(),selectedGoal.GetName(),selectedGoal.GetDescription(),selectedGoal.GetPoints());
+                            SetScore(selectedGoal.GetPoints());
+                            Console.WriteLine($"Goal '{selectedGoal.GetName()}' marked as completed!");
+                            //selectedGoal.RecordEvent();
+                            //selectedGoal.GetDetailString().Split(',')[4] = "true";
+                            //selectedGoal.GetDetailString().Split(',')[4] = "true";
+                            //selectedGoal.MarkAsCompleted();
+                            //selectedGoal.SetGoals();
+                            //goals[goalNumber] = selectedGoal;
+                        }
+                        else if (selectedGoal.GetGoalType() == 2)
+                        
+                        {
+                            if (selectedGoal.GetCurrentAmount() >= selectedGoal.GetTargetAmount())
+                            {
+                                Console.WriteLine($"Goal '{selectedGoal.GetName()}' already completed!");
+                                
+                            }
+                            else if (selectedGoal.GetCurrentAmount() < selectedGoal.GetTargetAmount())
+                            {
+                                if (selectedGoal.GetCurrentAmount() + 1 == selectedGoal.GetTargetAmount())
+                                {
+                                    selectedGoal.SetCurrentAmount();
+                                    SetScore(selectedGoal.GetPoints());
+                                    SetScore(selectedGoal.GetBonusPoints());
+                                    Console.WriteLine($"Goal '{selectedGoal.GetName()}' marked as completed!");
+                                    
+                                }
+                                else
+                                {
+                                    selectedGoal.SetCurrentAmount();
+                                    SetScore(selectedGoal.GetPoints());
+                                    Console.WriteLine($"Goal '{selectedGoal.GetName()}' marked as in progress!");
+                                    
+                                }
+                                
+                            }
+                            //selectedGoal = new ChecklistGoal(selectedGoal.GetGoalType(),selectedGoal.GetName(),selectedGoal.GetDescription(),selectedGoal.GetPoints(),selectedGoal.GetTargetAmount(),selectedGoal.GetBonusPoints(),selectedGoal.SetCurrentAmount());
+                            
+                            
+                        }
+                        else if (selectedGoal.GetType() == typeof(EternalGoal))
+                        {
+                            SetScore(selectedGoal.GetPoints());
+                            
+                        }
+                        //selectedGoal = new SimpleGoal(selectedGoal.GetGoalType(),selectedGoal.GetName(),selectedGoal.GetDescription(),selectedGoal.GetPoints(),selectedGoal.IsCompleted());
+
+                        //selectedGoal.RecordEvent();
+                    }
+                    //Goal selectedGoal = goals[goalNumber];
                     
-                    _score += selectedGoal.GetPoints();
+                    //selectedGoal = new SimpleGoal(selectedGoal.GetGoalType(),selectedGoal.GetName(),selectedGoal.GetDescription(),selectedGoal.GetPoints(),selectedGoal.IsCompleted());
+                    //selectedGoal.GetDetailString().Split(',')[4] = "true";
+                    //selectedGoal.GetDetailString().Split(',')[4] = "true";
+                    //selectedGoal.MarkAsCompleted();
+                    //selectedGoal.SetGoals();
+                    //goals[goalNumber] = selectedGoal;
+                    //SetScore(selectedGoal.GetPoints());
+                    //Console.WriteLine($"Goal '{selectedGoal.GetName()}' marked as completed!");
+                    
+                    //_score += selectedGoal.GetPoints();
                 }
                 else if (goalNumber >= 0 && goalNumber < goals.Count)
                 {
@@ -338,9 +405,10 @@ public class GoalManager
                         int points = int.Parse(parts[3]);
                         //bool isCompleted = bool.Parse(parts[4]);
                         string isCompleted = parts[4];
+                        bool result = bool.Parse(isCompleted);
                         //int targetAmount = int.Parse(parts[5]);
                         //int bonusPoints = int.Parse(parts[6]);
-                        goals.Add(new SimpleGoal(goalType, name, description, points, isCompleted)); 
+                        goals.Add(new SimpleGoal(goalType, result, name, description, points)); 
                         
                         //Goal goal = new SimpleGoal(goalType, name, description, points, isCompleted);
                         //goals.Add(goal);
@@ -352,5 +420,11 @@ public class GoalManager
             
             //return entryLins;
             
+        }
+        public void RecordEvent()        
+        {
+            // Implement logic to record an event for the goal
+            // This could involve updating the goal's status or points based on the event.
+            Console.WriteLine("Event recorded for the goal.");
         }
 }

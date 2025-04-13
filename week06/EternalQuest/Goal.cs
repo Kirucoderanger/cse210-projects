@@ -13,47 +13,6 @@ public class Goal
         _description = description;
         _points = points;
     }
-    public void SetIscomplete(string isComplete)
-    {
-        string _isComplete = isComplete;
-        //_completed = isComplete;
-    }
-    public void SetGoals(int goalType, string name, string description, int points)
-    {
-        _goalType = goalType;
-        _name = name;
-        _description = description;
-        _points = points;
-    }
-    public virtual void SetGoals()
-    {
-       
-        //_completed = completed;
-    }
-    public virtual void SetGoals(int goalType, string name, string description, int points, string completed)
-    {
-        _goalType = goalType;
-        _name = name;
-        _description = description;
-        _points = points;
-        //_completed = completed;
-    }
-    public Goal(int goalType, string name, string description, int points, bool completed)
-    {
-        _goalType = goalType;
-        _name = name;
-        _description = description;
-        _points = points;
-        //_completed = completed;
-    }
-    public Goal(int goalType, string name, string description, int points, string isComplete)
-    {
-        _goalType = goalType;
-        _name = name;
-        _description = description;
-        _points = points;
-        //_completed = completed;
-    }
     public virtual int GetGoalType()
     {
         return _goalType;
@@ -81,20 +40,22 @@ public class Goal
     {
         return _points;
     }
+    
 
-    public bool IsCompleted()
+    public virtual  bool IsCompleted()
     {
         return false;
-        //return _completed;
+       
+       
     }
-
-    public void MarkAsCompleted()
+    public virtual bool GetIsCompleted()
     {
-        string _isComplete = "true";
+        return false;
     }
+    
     public virtual  string GetDetailString()
     {
-        return $"{_goalType},{_name},{_description},{_points},{IsCompleted()}";
+        return $"{_goalType},{_name},{_description},{_points}";
     }
     public virtual void GetStringRepresentation()
     {
@@ -106,6 +67,37 @@ public class Goal
         Console.WriteLine($"Points: {_points}");
         //Console.WriteLine($"Completed: {_completed}");
         //Console.WriteLine($"Completed: {IsCompleted()}");
+    }
+    public virtual void RecordEvent(int goalType)
+    {
+        if (goalType == 1)
+        {
+            Console.WriteLine("Simple Goal Completed!");
+        }
+        else if (goalType == 2)
+        {
+            Console.WriteLine("Checklist Goal Completed!");
+        }
+        else if (goalType == 3)
+        {
+            Console.WriteLine("Eternal Goal Completed!");
+        }
+    }
+    public virtual int GetBonusPoints()
+    {
+        return 0;
+    }
+    public virtual int GetTargetAmount()
+    {
+        return 0;
+    }
+    public virtual int GetCurrentAmount()
+    {
+        return 0;
+    }
+    public virtual int SetCurrentAmount()
+    {
+        return 0;
     }
 }
 // Compare this snippet from week06/Shapes/Circle.cs:

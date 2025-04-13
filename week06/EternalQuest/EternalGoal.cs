@@ -25,4 +25,8 @@ public class EternalGoal : Goal
     {
         return base.GetDetailString();
     }
+    public override string RecordEvent()
+    {
+        return "Congratulations you have accomplished your goal!";
+    }
 }
