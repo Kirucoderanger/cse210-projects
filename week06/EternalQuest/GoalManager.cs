@@ -138,7 +138,47 @@ public class GoalManager
                 //float pay = employee1.CalculatePay(); //Polymorphism in Action
                 //Console.WriteLine(goal.ToString());
                 string detail = goal.GetDetailString();
-                Console.WriteLine(detail);
+                if (detail.Split(',')[0] == "1")
+                    {
+                        if (detail.Split(',')[1] == "True")
+                        {
+                            Console.Write(" [ X ] ");
+                            Console.WriteLine(detail);
+                        }
+                        else
+                        {
+                            Console.Write(" [   ] ");
+                            Console.WriteLine(detail);
+                        }
+                        //Console.WriteLine("SimpleGoal");
+                        //Console.WriteLine(detail);
+                        //Console.WriteLine(detail.Split(',')[2]);
+                    }
+                    else if (detail.Split(',')[0] == "2")
+                    {
+                        if (detail.Split(',')[6] == detail.Split(',')[4])
+                        {
+                            Console.Write(" [ X ] ");
+                            Console.WriteLine(detail);
+                        }
+                        else
+                        {
+                            Console.Write(" [   ] ");
+                            Console.WriteLine(detail);
+                        }
+                        //Console.WriteLine("ChecklistGoal");
+                        //Console.WriteLine(detail);
+                        //Console.WriteLine(detail.Split(',')[2]);
+                    }
+                    else if (detail.Split(',')[0] == "3")
+                    {
+                        //Console.WriteLine("EternalGoal");
+                        //Console.WriteLine(detail);
+                        //Console.WriteLine(
+                        Console.Write(" [   ] ");
+                        Console.WriteLine(detail);
+                    }
+                
                 }
                 break;
                 case "3":
