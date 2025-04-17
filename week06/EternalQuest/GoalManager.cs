@@ -13,6 +13,10 @@ public class GoalManager
     {
         _score = _score + score;
     }
+    public void SetScore1(int score)
+    {
+        _score = _score - score;
+    }
     public int GetScore()
     {
         return _score;
@@ -62,6 +66,7 @@ public class GoalManager
                     Console.WriteLine("1. Simple Goal");
                     Console.WriteLine("2. Checklist Goal");
                     Console.WriteLine("3. Eternal Goal");
+                    Console.WriteLine("4. Bad Habits");
                     Console.WriteLine("which type of goal you wold like to create"); 
                     int GoalType = int.Parse(Console.ReadLine());
                     //SetGoaltype(GoalType);
@@ -121,6 +126,22 @@ public class GoalManager
                         goals.Add(new EternalGoal(GoalType, Name, Description, Points)); 
 
                     }
+                    else if(GoalType == 4)
+                    {
+                        Console.WriteLine("Enter Habit name:");
+                        string Name = Console.ReadLine();
+                        //SetName(Name);
+                        
+                        Console.WriteLine("Enter thr bad habit description:");
+                        string Description = Console.ReadLine();
+                        //SetDescription(Description);
+                        Console.WriteLine("Enter points should be deducted every time you did a bad habit:");
+                        int Points = int.Parse(Console.ReadLine());
+                        //SetPoints(Points);
+
+                        goals.Add(new BadHabits(GoalType, Name, Description, Points)); 
+
+                    }
                     else 
                     {
                         Console.WriteLine("Invalid input try again");
@@ -171,6 +192,14 @@ public class GoalManager
                         //Console.WriteLine(detail.Split(',')[2]);
                     }
                     else if (detail.Split(',')[0] == "3")
+                    {
+                        //Console.WriteLine("EternalGoal");
+                        //Console.WriteLine(detail);
+                        //Console.WriteLine(
+                        Console.Write(" [   ] ");
+                        Console.WriteLine(detail);
+                    }
+                    else if (detail.Split(',')[0] == "4")
                     {
                         //Console.WriteLine("EternalGoal");
                         //Console.WriteLine(detail);
@@ -259,6 +288,18 @@ public class GoalManager
                         Goal goal = new EternalGoal(goalType, name, description, points);
                         goals.Add(goal);
                     }
+                    else if (goalTypeIdentifier == 4)
+                    {
+                        // EternalGoal
+                        int goalType = int.Parse(parts[0]);
+                        string name = parts[1];
+                        string description = parts[2];
+                        int points = int.Parse(parts[3]);
+                        //bool isCompleted = bool.Parse(parts[4]);
+                        
+                        Goal goal = new BadHabits(goalType, name, description, points);
+                        goals.Add(goal);
+                    }
                     else
                     {
                         Console.WriteLine("Invalid goal format in file.");
@@ -341,6 +382,11 @@ public class GoalManager
                         else if (selectedGoal.GetType() == typeof(EternalGoal))
                         {
                             SetScore(selectedGoal.GetPoints());
+                            
+                        }
+                        else if (selectedGoal.GetType() == typeof(BadHabits))
+                        {
+                            SetScore1(selectedGoal.GetPoints());
                             
                         }
                         //selectedGoal = new SimpleGoal(selectedGoal.GetGoalType(),selectedGoal.GetName(),selectedGoal.GetDescription(),selectedGoal.GetPoints(),selectedGoal.IsCompleted());
