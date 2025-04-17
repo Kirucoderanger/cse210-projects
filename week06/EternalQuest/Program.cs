@@ -9,6 +9,7 @@
 // The program is designed to be modular, with separate classes for different components of the goal management system, making it easy to maintain and update.
 // The program is designed to be efficient, with optimized algorithms for managing and tracking goals, ensuring that it can handle large numbers of goals without performance issues.
 // Polymorphism is used to allow different types of goals to be managed in a consistent manner, while encapsulation is used to hide the implementation details of the goal management system from the user.
+// The program also deduces points for bad habits, encouraging users to focus on positive goal achievement rather than negative behaviors.
 using System;
 
 class Program
